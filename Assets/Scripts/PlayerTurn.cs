@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PlayerTurn : MonoBehaviour
 {
-    private int playerIndex;
+    private int _playerIndex;
 
     public void SetPlayerTurn(int index)
     {
-        playerIndex = index;
+        _playerIndex = index;
     }
     
     public bool IsPlayerTurn()
     {
-        return TurnBasedManager.GetInstance().IsItPlayerTurn(playerIndex);
+        return TurnBasedManager.GetInstance().IsItPlayerTurn(_playerIndex);
     }
 }

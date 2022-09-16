@@ -7,7 +7,7 @@ public class ProjectileScript : MonoBehaviour
 {
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private GameObject damageIndicatorPrefab;
+    //[SerializeField] private GameObject damageIndicatorPrefab;
     private bool _isTrue;
 
     public void Initialize()
@@ -24,12 +24,12 @@ public class ProjectileScript : MonoBehaviour
         // }
     }
 
-    private void OnCollisionEnter(Collision col)
-    {
-        // GameObject colObject = col.gameObject;
-        // Destroy(colObject);
-        GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
-        damageIndicator.transform.position = transform.position;
-    }
+    // private void OnCollisionEnter(Collision col)
+    // {
+    //     // GameObject colObject = col.gameObject;
+    //     // Destroy(colObject);
+    //     GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
+    //     damageIndicator.transform.position = transform.position;
+    // }
     
 }
