@@ -13,13 +13,15 @@ public class ProjectileScript : MonoBehaviour
     public void Initialize()
     {
         _isTrue = true;
+        rb.AddForce(transform.forward * 700f + transform.up * 300f);
+
     }
     void Update()
     {
-        if (_isTrue)
-        {
-            transform.Translate(transform.forward * (speed * Time.deltaTime));
-        }
+        // if (_isTrue)
+        // {
+        //     transform.Translate(transform.forward * (speed * Time.deltaTime));
+        // }
     }
 
     private void OnCollisionEnter(Collision col)

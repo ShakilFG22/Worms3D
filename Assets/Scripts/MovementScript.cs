@@ -9,7 +9,7 @@ public class MovementScript : MonoBehaviour
     private CharacterController _characterController;
     private bool _groundedPlayer;
     private Vector3 _playerVelocity;
-    private float _playerJump = 1.0f;
+    private float _playerJump = 0.5f;
     private float _gravityValue = -9.81f;
     
     private void Start()
@@ -36,12 +36,6 @@ public class MovementScript : MonoBehaviour
         _characterController.Move(_playerVelocity * Time.deltaTime);
         
     }
-    
-    // private void Jump()
-    // {
-    //     //characterBody.velocity = Vector3.up * 10f;
-    //     _characterController.AddForce(Vector3.up * 500f);
-    // }
     
     private bool IsTouchingFloor()
     {

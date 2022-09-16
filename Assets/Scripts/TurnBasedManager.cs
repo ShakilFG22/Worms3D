@@ -53,10 +53,10 @@ public class TurnBasedManager : MonoBehaviour
         return instance;
     }
 
-    // public void TriggerChangeTurn()
-    // {
-    //     waitingForNextTurn = true;
-    // }
+    public void TriggerChangeTurn()
+    {
+        waitingForNextTurn = true;
+    }
 
     private void ChangeTurn()
     {
