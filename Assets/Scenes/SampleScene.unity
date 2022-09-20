@@ -289,19 +289,7 @@ MonoBehaviour:
   playerTurn: {fileID: 321917204}
   projectilePrefab: {fileID: 4659742315063006536, guid: feb172b2b9923bc4e84a3bbf9416ad1d, type: 3}
   shootingStartPosition: {fileID: 1787985174}
---- !u!114 &321917210
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 321917188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e723ab75f7ae104d86b8c2f3b5bf3aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealthPoints: 4
+  playerCurrentHealthPoints: 2
 --- !u!4 &695935479 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8749218494795240402, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
@@ -534,19 +522,7 @@ MonoBehaviour:
   playerTurn: {fileID: 812336699}
   projectilePrefab: {fileID: 4659742315063006536, guid: feb172b2b9923bc4e84a3bbf9416ad1d, type: 3}
   shootingStartPosition: {fileID: 695935479}
---- !u!114 &812336709
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 812336694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e723ab75f7ae104d86b8c2f3b5bf3aa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentHealthPoints: 4
+  playerCurrentHealthPoints: 2
 --- !u!1 &1291436313
 GameObject:
   m_ObjectHideFlags: 0

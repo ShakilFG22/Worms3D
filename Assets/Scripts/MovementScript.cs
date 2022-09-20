@@ -6,6 +6,7 @@ using UnityEngine.Serialization;
 
 public class MovementScript : MonoBehaviour
 {
+
     [SerializeField] private float speed = 5f;
     [SerializeField] private PlayerTurn playerTurn;
     private CharacterController _characterController;

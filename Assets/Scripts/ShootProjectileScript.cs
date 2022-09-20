@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -7,8 +8,26 @@ public class ShootProjectileScript : MonoBehaviour
     [SerializeField] private PlayerTurn playerTurn;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
-    private HealthPointsScript _healthPointsScript;
+    [SerializeField] private int playerCurrentHealthPoints = 2;
+    private int playerHealth;
+    private int enemyHealth;
+    private bool playerHit;
+    private bool enemyHit;
+    // public int  enemyCurrentHealthPoints = 2;
     
+
+    // [HideInInspector] public HealthPointsScript _healthPointsScript;
+    // private static HealthPointsScript _healthPoints;
+    // private int _playerCurrentHp = _healthPoints.playerCurrentHealthPoints;
+    // private int _enemyCurrentHp  = _healthPoints.enemyCurrentHealthPoints;
+
+    private void Start()
+    {
+        int currentHealthPoints = playerCurrentHealthPoints;
+        playerHealth = currentHealthPoints;
+        enemyHealth  = currentHealthPoints;
+    }
+
     private void Update()
     {
         bool isPlayerTurn = playerTurn.IsPlayerTurn();
@@ -24,7 +43,6 @@ public class ShootProjectileScript : MonoBehaviour
             }
         }
     }
-    
     private void DealDamage()
     {
         Ray rayFrom = new Ray(transform.position, transform.forward);
@@ -33,13 +51,17 @@ public class ShootProjectileScript : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
-                Debug.Log(_healthPointsScript + " hp left");
-                hit.collider.GetComponent<HealthPointsScript>().TakeDamage(1);
+                playerHit = true;
+                hit.collider.GetComponent<ShootProjectileScript>().TakeDamage(1, playerHit);
+                Debug.Log("Player has " + playerHealth + " hp left!");
             }
             else if (hit.collider.CompareTag("Enemy"))
             {
-                Debug.Log(_healthPointsScript + " hp left");
-                hit.collider.GetComponent<HealthPointsScript>().TakeDamage(1);
+                enemyHit = false;
+                Debug.Log("enemy1"); //went through
+                hit.collider.GetComponent<ShootProjectileScript>().TakeDamage(1, enemyHit);
+                Debug.Log("Enemy has " + enemyHealth + " hp left!"); //still enemyHealth = 2 ???????
+                Debug.Log("enemy3");
             }
             else
             {
@@ -47,14 +69,41 @@ public class ShootProjectileScript : MonoBehaviour
             }
         }
     }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public void TakeDamage(int damage, bool hit)
+    {
+        if (playerHealth == 1 && hit == true)
+        {
+            playerHealth -= damage;
+            //currentHealthPoints = playerHealth; //Error
+        }
+        else if (enemyHealth == 1 && hit == false)
+        {
+            enemyHealth -= damage;
+            playerCurrentHealthPoints = enemyHealth;
+            Debug.Log("enemy4");
+        }
+        if (playerHealth == 2 && hit == true)
+        {
+            playerHealth -= damage;
+            playerCurrentHealthPoints = playerHealth;
+        }
+        else if (enemyHealth == 2 && hit == false)
+        {
+            enemyHealth = enemyHealth - damage;
+            playerCurrentHealthPoints = enemyHealth;
+            Debug.Log("enemy2"); //went through
+        }
+
+        if (playerHealth <= 0 && hit == true)
+        {
+            Debug.Log("You are already dead: " + playerHealth);
+            Destroy(gameObject);
+        }
+        else if (enemyHealth <= 0 && hit == false)
+        {
+            Debug.Log("You are already dead: " + enemyHealth);
+            Destroy(gameObject);
+        }
+    }
 }
 

@@ -5,7 +5,9 @@ using UnityEngine;
 
 public class HealthPointsScript : MonoBehaviour
 {
-    public int currentHealthPoints = 4;
+    public int playerCurrentHealthPoints = 2;
+    public int enemyCurrentHealthPoints = 2;
+    // [HideInInspector]public int currentHealthPoints = 2;
     public static bool isPlayerDead = false;
     private ProjectileScript _projectileScript;
 
@@ -14,15 +16,18 @@ public class HealthPointsScript : MonoBehaviour
         
     }
 
-    public void TakeDamage(int damage)
-    {
-        currentHealthPoints = currentHealthPoints - damage;
-
-        if (currentHealthPoints <= 0 && isPlayerDead == false)
-            Debug.Log("You are already dead: " + currentHealthPoints);
-            isPlayerDead = true;
-            // Destroy(gameObject);
-    }
+    // public void TakeDamage(int damage)
+    // {
+    //     currentHealthPoints -= damage;
+    //     Debug.Log(currentHealthPoints);
+    //     
+    //     if (currentHealthPoints <= 0 && isPlayerDead == false)
+    //     {
+    //         Debug.Log("You are already dead: " + currentHealthPoints);
+    //         isPlayerDead = true;
+    //         Destroy(gameObject);
+    //     }
+    // }
     
     void Update()
     {
@@ -46,6 +51,6 @@ public class HealthPointsScript : MonoBehaviour
     //         }
     //     }
     // }
-    
+    //
     
 }

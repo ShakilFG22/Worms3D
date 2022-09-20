@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST}
+// public enum BattleState {START, PLAYERTURN, ENEMYTURN, WON, LOST}
 
 public class BattleSystem : MonoBehaviour
 {
@@ -14,16 +14,14 @@ public class BattleSystem : MonoBehaviour
     public Transform playerBattleStation;
     public Transform enemyBattleStation;
 
-    Unit playerUnit;
-    Unit enemyUnit;
+    // Unit playerUnit;
+    // Unit enemyUnit;
 
-    public Text dialogueText;
-
-    public BattleState state;
+    // public BattleState state;
     
     void Start()
     {
-        state = BattleState.START;
+        // state = BattleState.START;
         SetupBattle();
     }
 
@@ -33,7 +31,7 @@ public class BattleSystem : MonoBehaviour
         playerGO.GetComponent<Unit>();
         
         GameObject enemyGo = Instantiate(enemyPrefab, enemyBattleStation);
-        enemyUnit = enemyGo.GetComponent<Unit>();
+        enemyGo.GetComponent<Unit>();
 
         // dialogueText.text = "A wild " + enemyUnit.unitName + " approaches";
     }
