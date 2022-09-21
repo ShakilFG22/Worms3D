@@ -13,7 +13,7 @@ public class MovementScript : MonoBehaviour
     private bool _groundedPlayer;
     private Vector3 _playerVelocity;
     private float _playerJump = 0.5f;
-    private float _gravityValue = -9.81f;
+    private float _gravityValue = -9.82f;
     
     private void Start()
     {
@@ -30,6 +30,10 @@ public class MovementScript : MonoBehaviour
             }
             
             Vector3 move = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            // if (GetComponent<CharacterController>(CompareTag("Enemy")))
+            // {
+            //     player 2 code
+            // }
             _characterController.Move(move * (Time.deltaTime * speed));
 
             if (Input.GetButtonDown("Jump") && IsTouchingFloor())

@@ -289,7 +289,7 @@ MonoBehaviour:
   playerTurn: {fileID: 321917204}
   projectilePrefab: {fileID: 4659742315063006536, guid: feb172b2b9923bc4e84a3bbf9416ad1d, type: 3}
   shootingStartPosition: {fileID: 1787985174}
-  playerCurrentHealthPoints: 2
+  playerCurrentHealthPoints: 4
 --- !u!4 &695935479 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8749218494795240402, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
@@ -491,6 +491,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &739660236
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 739660237}
+  m_Layer: 0
+  m_Name: SwitchCamera(Empty)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &739660237
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739660236}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: 0, y: 0.93, z: 0.958}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 812336708}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &812336694 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2124156829995764567, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
@@ -522,7 +553,12 @@ MonoBehaviour:
   playerTurn: {fileID: 812336699}
   projectilePrefab: {fileID: 4659742315063006536, guid: feb172b2b9923bc4e84a3bbf9416ad1d, type: 3}
   shootingStartPosition: {fileID: 695935479}
-  playerCurrentHealthPoints: 2
+  playerCurrentHealthPoints: 4
+--- !u!4 &812336708 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2124156829995764571, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
+  m_PrefabInstance: {fileID: 2124156829196176737}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1291436313
 GameObject:
   m_ObjectHideFlags: 0
