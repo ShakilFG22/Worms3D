@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class TurnBasedManager : MonoBehaviour
 {
-    private static TurnBasedManager instance;
+    private static TurnBasedManager _instance;
     [SerializeField] private PlayerTurn playerOne;
     [SerializeField] private PlayerTurn playerTwo;
     [SerializeField] private float timeBetweenTurns;
     
-    private int currentPlayerIndex;
-    private bool waitingForNextTurn;
-    private float turnDelay;
+    private int _currentPlayerIndex;
+    private bool _waitingForNextTurn;
+    private float _turnDelay;
 
     private void Awake()
     {
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = this;
-            currentPlayerIndex = 1;
+            _instance = this;
+            _currentPlayerIndex = 1;
             playerOne.SetPlayerTurn(1);
             playerTwo.SetPlayerTurn(2);
         }
@@ -26,13 +26,13 @@ public class TurnBasedManager : MonoBehaviour
 
     private void Update()
     {
-        if (waitingForNextTurn)
+        if (_waitingForNextTurn)
         {
-            turnDelay += Time.deltaTime;
-            if (turnDelay >= timeBetweenTurns)
+            _turnDelay += Time.deltaTime;
+            if (_turnDelay >= timeBetweenTurns)
             {
-                turnDelay = 0;
-                waitingForNextTurn = false;
+                _turnDelay = 0;
+                _waitingForNextTurn = false;
                 ChangeTurn();
             }
         }
@@ -40,33 +40,33 @@ public class TurnBasedManager : MonoBehaviour
 
     public bool IsItPlayerTurn(int index)
     {
-        if (waitingForNextTurn)
+        if (_waitingForNextTurn)
         { 
             return false;
         }
 
-        return index == currentPlayerIndex;
+        return index == _currentPlayerIndex;
     }
 
     public static TurnBasedManager GetInstance()
     {
-        return instance;
+        return _instance;
     }
 
     public void TriggerChangeTurn()
     {
-        waitingForNextTurn = true;
+        _waitingForNextTurn = true;
     }
 
     private void ChangeTurn()
     {
-        if (currentPlayerIndex == 1)
+        if (_currentPlayerIndex == 1)
         {
-            currentPlayerIndex = 2;
+            _currentPlayerIndex = 2;
         }
-        else if (currentPlayerIndex == 2)
+        else if (_currentPlayerIndex == 2)
         {
-            currentPlayerIndex = 1;
+            _currentPlayerIndex = 1;
         }
     }
 }
