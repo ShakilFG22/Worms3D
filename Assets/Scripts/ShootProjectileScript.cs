@@ -49,15 +49,13 @@ public class ShootProjectileScript : MonoBehaviour
             else if (hit.collider.CompareTag("Enemy"))
             {
                 _hasHit = false;
-                // Debug.Log("enemy1"); //went through
                 hit.collider.GetComponent<ShootProjectileScript>().TakeDamage(HealthPointDownByOne, _hasHit);
                 _enemyHealth -= HealthPointDownByOne;
-                Debug.Log("Enemy has " + _enemyHealth + " hp left!"); //still enemyHealth = 2 ???????
-                // Debug.Log("enemy3");
+                Debug.Log("Enemy has " + _enemyHealth + " hp left!");
             }
             else
             {
-                Debug.Log("Haha!!!!");
+                Debug.Log("Haha missed!!!!");
             }
         }
     }
@@ -73,7 +71,6 @@ public class ShootProjectileScript : MonoBehaviour
         {
             _enemyHealth -= damage;
             playerCurrentHealthPoints = _enemyHealth;
-            // Debug.Log("enemy2");
         }
         if (_playerHealth <= 0 && hit == true)
         {

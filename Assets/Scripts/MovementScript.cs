@@ -19,13 +19,12 @@ public class MovementScript : MonoBehaviour
     private float _gravityValue = -9.82f;
     private GameObject _gameObject;
     
-    private Vector3 velocity;
-    private bool isGrounded = false;
-    private float xRotation = 0f;
-
-    [SerializeField]private Transform basePoint;
-    [SerializeField]private float baseRadius = 0.5f;
-    [SerializeField]private LayerMask layerMask;
+    // private Vector3 velocity;
+    // private bool isGrounded = false;
+    // [SerializeField]private Transform basePoint;
+    // [SerializeField]private float baseRadius = 0.5f;
+    // [SerializeField]private LayerMask layerMask;
+    private float _xRotation = 0f;
     [SerializeField]private float mouseSensitivity;
     [SerializeField]private Transform mainCamera;
 
@@ -50,7 +49,8 @@ public class MovementScript : MonoBehaviour
             //     _playerVelocity.y = 0f;
             // }
             
-            Vector3 playerMove = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            // Vector3 playerMove = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")); //Old move script
+            Vector3 playerMove = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
             _characterController1.Move(playerMove * (Time.deltaTime * speed));
             
             // Vector3 enemyMove = new Vector3(-Input.GetAxis("Horizontal"), 0, -Input.GetAxis("Vertical"));//
@@ -65,7 +65,7 @@ public class MovementScript : MonoBehaviour
             _characterController1.Move(_playerVelocity * Time.deltaTime);
             // _characterController2.Move(_playerVelocity * Time.deltaTime);//
             
-            // FollowMouse();
+            FollowMouse();
         }
     }
     
@@ -77,19 +77,19 @@ public class MovementScript : MonoBehaviour
     }
 
 
-    // private void FollowMouse()
-    // {
-    //     float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-    //     float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
-    //
-    //     _characterController1.transform.Rotate(Vector3.up * mouseX);
-    //
-    //     xRotation -= mouseY;
-    //     xRotation = Mathf.Clamp(xRotation, -90f, 90f);
-    //
-    //     mainCamera.localRotation = Quaternion.Euler(mouseY, 0f, 0f);
-    //
-    // }
+    private void FollowMouse()
+    {
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+    
+        _characterController1.transform.Rotate(Vector3.up * mouseX);
+    
+        _xRotation -= mouseY;
+        _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+    
+        mainCamera.localRotation = Quaternion.Euler(mouseY, 0f, 0f);
+    
+    }
     // private void ResetVelocity()
     // {
     //     isGrounded = Physics.CheckSphere(basePoint.position, baseRadius, layerMask);
