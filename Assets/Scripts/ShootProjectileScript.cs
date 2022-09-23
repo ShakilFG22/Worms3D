@@ -28,6 +28,7 @@ public class ShootProjectileScript : MonoBehaviour
                 TurnBasedManager.GetInstance().TriggerChangeTurn();
                 GameObject newProjectile = Instantiate(projectilePrefab);
                 newProjectile.transform.position = shootingStartPosition.position;
+                newProjectile.transform.localRotation = shootingStartPosition.rotation;
                 newProjectile.GetComponent<ProjectileScript>().Initialize();
                 DealDamage();
             }
@@ -37,7 +38,7 @@ public class ShootProjectileScript : MonoBehaviour
     {
         Ray rayFrom = new Ray(transform.position, transform.forward);
         RaycastHit hit = default;
-        if (Physics.Raycast(rayFrom, out hit, 250))
+        if (Physics.Raycast(rayFrom, out hit, Mathf.Infinity))
         {
             if (hit.collider.CompareTag("Player"))
             {
