@@ -31,10 +31,11 @@ public class ShootProjectileScript : MonoBehaviour
                 newProjectile.transform.localRotation = shootingStartPosition.rotation;
                 newProjectile.GetComponent<ProjectileScript>().Initialize();
                 DealDamage();
+                // DealDamage(newProjectile);
             }
         }
     }
-    private void DealDamage()
+    private void DealDamage(/*GameObject projectile*/)
     {
         Ray rayFrom = new Ray(transform.position, transform.forward);
         RaycastHit hit = default;
@@ -42,6 +43,7 @@ public class ShootProjectileScript : MonoBehaviour
         {
             if (hit.collider.CompareTag("Player"))
             {
+                // Debug.DrawLine(transform.position,transform.forward, new Color(0.73f, 1f, 0f));
                 _hasHit = true;
                 hit.collider.GetComponent<ShootProjectileScript>().TakeDamage(HealthPointDownByOne, _hasHit);
                 _playerHealth -= HealthPointDownByOne;
@@ -49,6 +51,7 @@ public class ShootProjectileScript : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Enemy"))
             {
+                Debug.DrawLine(transform.position,transform.forward, new Color(0.73f, 1f, 0f));
                 _hasHit = false;
                 hit.collider.GetComponent<ShootProjectileScript>().TakeDamage(HealthPointDownByOne, _hasHit);
                 _enemyHealth -= HealthPointDownByOne;
