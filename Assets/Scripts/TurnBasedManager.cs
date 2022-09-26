@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 
 public class TurnBasedManager : MonoBehaviour
 {
@@ -8,7 +10,10 @@ public class TurnBasedManager : MonoBehaviour
     [SerializeField] private PlayerTurn playerOne;
     [SerializeField] private PlayerTurn playerTwo;
     [SerializeField] private float timeBetweenTurns;
-    
+    public GameObject playerCamera;
+    public GameObject enemyCamera;
+    public GameObject thirdCamera;
+
     private int _currentPlayerIndex;
     private bool _waitingForNextTurn;
     private float _turnDelay;
@@ -62,11 +67,20 @@ public class TurnBasedManager : MonoBehaviour
     {
         if (_currentPlayerIndex == 1)
         {
+            playerCamera.gameObject.SetActive(false);
             _currentPlayerIndex = 2;
+            enemyCamera.gameObject.SetActive(true);
         }
         else if (_currentPlayerIndex == 2)
         {
+            enemyCamera.gameObject.SetActive(false);
             _currentPlayerIndex = 1;
+            playerCamera.gameObject.SetActive(true);
         }
+    }
+
+    public void ChangeToThirdCamera()
+    {
+        thirdCamera.gameObject.SetActive(true);
     }
 }

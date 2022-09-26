@@ -11,8 +11,7 @@ public class ProjectileScript : MonoBehaviour
         // rb.AddForceAtPosition(transform.forward * 1000f, transform.forward, ForceMode.Acceleration);
         // rb.AddForce (transform.forward * 20, ForceMode.Impulse);
         // rb.AddForce(transform.position * 700 + transform.TransformDirection(Vector3.forward)); 
-
-        rb.AddForce(transform.forward * 1000f + transform.forward * 300f); //OG, need to be changed
+        rb.AddForce(transform.forward * 1000f + transform.forward * 300f); //Character controller radius 1.02
     }
 }
 // Vector3(0.125791773,0.125791773,0.125791773)//projectile scale

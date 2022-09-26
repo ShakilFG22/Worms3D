@@ -9,6 +9,7 @@ public class ShootProjectileScript : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
     [SerializeField] private int playerCurrentHealthPoints;
+    public TurnBasedManager thirdCamera;
     private int _playerHealth;
     private int _enemyHealth;
     private bool _hasHit;
@@ -31,19 +32,31 @@ public class ShootProjectileScript : MonoBehaviour
                 newProjectile.transform.localRotation = shootingStartPosition.rotation;
                 newProjectile.GetComponent<ProjectileScript>().Initialize();
                 DealDamage();
-                // DealDamage(newProjectile);
             }
         }
+        else if (Input.GetKeyDown(KeyCode.Mouse1))
+        {
+            _playerHealth = 0;
+            _enemyHealth = 0;
+            Destroy(gameObject);
+            TurnBasedManager.GetInstance().ChangeToThirdCamera();
+        }
     }
-    private void DealDamage(/*GameObject projectile*/)
+    // private void OnTriggerEnter()
+    // {
+    //     if (gameObject.CompareTag("Enemy"))
+    //     {
+    //         Debug.Log("Hit target");
+    //     }
+    // }
+    private void DealDamage()
     {
-        Ray rayFrom = new Ray(transform.position, transform.forward);
+        Ray rayFrom = new Ray(transform.position, transform.forward); //Without the projectile it can still hit the target
         RaycastHit hit = default;
         if (Physics.Raycast(rayFrom, out hit, Mathf.Infinity))
         {
             if (hit.collider.CompareTag("Player"))
             {
-                // Debug.DrawLine(transform.position,transform.forward, new Color(0.73f, 1f, 0f));
                 _hasHit = true;
                 hit.collider.GetComponent<ShootProjectileScript>().TakeDamage(HealthPointDownByOne, _hasHit);
                 _playerHealth -= HealthPointDownByOne;
@@ -51,7 +64,6 @@ public class ShootProjectileScript : MonoBehaviour
             }
             else if (hit.collider.CompareTag("Enemy"))
             {
-                Debug.DrawLine(transform.position,transform.forward, new Color(0.73f, 1f, 0f));
                 _hasHit = false;
                 hit.collider.GetComponent<ShootProjectileScript>().TakeDamage(HealthPointDownByOne, _hasHit);
                 _enemyHealth -= HealthPointDownByOne;
@@ -87,12 +99,5 @@ public class ShootProjectileScript : MonoBehaviour
             Destroy(gameObject);
         }
     }
-
-
-
-
-  
-
-
 }
 

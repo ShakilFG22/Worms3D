@@ -75,12 +75,5 @@ public class MovementScript : MonoBehaviour
     
         mainCamera.localRotation = Quaternion.Euler(mouseY, 0f, 0f);
     }
-    // private void ResetVelocity()
-    // {
-    //     isGrounded = Physics.CheckSphere(basePoint.position, baseRadius, layerMask);
-    //     if (isGrounded && velocity.y < 0)
-    //     {
-    //         velocity.y = -9.82f;
-    //     }
-    // }
+
 }
