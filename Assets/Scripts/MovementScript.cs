@@ -25,7 +25,7 @@ public class MovementScript : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
     }
 
-    void Update()
+    void Update() //Maybe change to FixedUpdate
     {
         if (playerTurn.IsPlayerTurn())
         {
@@ -36,6 +36,7 @@ public class MovementScript : MonoBehaviour
             }
             Vector3 playerMove = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
             _characterController.Move(playerMove * (Time.deltaTime * speed));
+            // _characterController.Move(playerMove * (Time.fixedDeltaTime * speed)); //Change to Time.FixedDeltaTime
             
             if (Input.GetButtonDown("Jump") && IsTouchingFloor())
             {
@@ -43,6 +44,7 @@ public class MovementScript : MonoBehaviour
             }
             
             _playerVelocity.y += _gravityValue * Time.deltaTime;
+            // _playerVelocity.y += _gravityValue * Time.FixedDeltaTime;
             _characterController.Move(_playerVelocity * Time.deltaTime);
             
             FollowMouse();

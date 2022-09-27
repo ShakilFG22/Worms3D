@@ -10,12 +10,11 @@ public class TurnBasedManager : MonoBehaviour
     [SerializeField] private PlayerTurn playerOne;
     [SerializeField] private PlayerTurn playerTwo;
     [SerializeField] private float timeBetweenTurns;
-    public GameObject playerCamera;
-    public GameObject enemyCamera;
-    public GameObject thirdCamera;
-
+    [SerializeField] private GameObject playerCamera;
+    [SerializeField] private GameObject enemyCamera;
+    [SerializeField] private GameObject thirdCamera;
     private int _currentPlayerIndex;
-    private bool _waitingForNextTurn;
+    private bool _isWaitingForNextTurn; // IsWaitingForNextTurn
     private float _turnDelay;
 
     private void Awake()
@@ -30,13 +29,13 @@ public class TurnBasedManager : MonoBehaviour
     }
     private void Update()
     {
-        if (_waitingForNextTurn)
+        if (_isWaitingForNextTurn)
         {
             _turnDelay += Time.deltaTime;
             if (_turnDelay >= timeBetweenTurns)
             {
                 _turnDelay = 0;
-                _waitingForNextTurn = false;
+                _isWaitingForNextTurn = false;
                 ChangeTurn();
             }
         }
@@ -44,7 +43,7 @@ public class TurnBasedManager : MonoBehaviour
 
     public bool IsItPlayerTurn(int index)
     {
-        if (_waitingForNextTurn)
+        if (_isWaitingForNextTurn)
         { 
             return false;
         }
@@ -58,7 +57,7 @@ public class TurnBasedManager : MonoBehaviour
 
     public void TriggerChangeTurn()
     {
-        _waitingForNextTurn = true;
+        _isWaitingForNextTurn = true;
     }
 
     private void ChangeTurn()
