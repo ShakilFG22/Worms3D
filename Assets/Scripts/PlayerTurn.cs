@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerTurn : MonoBehaviour
+public class PlayerTurn : MonoBehaviour //No need for MonoBehaviour
 {
     private int _playerIndex;
 
