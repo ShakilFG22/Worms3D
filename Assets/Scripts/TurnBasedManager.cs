@@ -28,7 +28,6 @@ public class TurnBasedManager : MonoBehaviour
             playerTwo.SetPlayerTurn(2);
         }
     }
-
     private void Update()
     {
         if (_waitingForNextTurn)
@@ -49,7 +48,6 @@ public class TurnBasedManager : MonoBehaviour
         { 
             return false;
         }
-
         return index == _currentPlayerIndex;
     }
 

@@ -9,7 +9,6 @@ public class ShootProjectileScript : MonoBehaviour
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private Transform shootingStartPosition;
     [SerializeField] private int playerCurrentHealthPoints;
-    public TurnBasedManager thirdCamera;
     private int _playerHealth;
     private int _enemyHealth;
     private bool _hasHit;
@@ -42,18 +41,11 @@ public class ShootProjectileScript : MonoBehaviour
             TurnBasedManager.GetInstance().ChangeToThirdCamera();
         }
     }
-    // private void OnTriggerEnter()
-    // {
-    //     if (gameObject.CompareTag("Enemy"))
-    //     {
-    //         Debug.Log("Hit target");
-    //     }
-    // }
+    
     private void DealDamage()
     {
-        Ray rayFrom = new Ray(transform.position, transform.forward); //Without the projectile it can still hit the target
-        RaycastHit hit = default;
-        if (Physics.Raycast(rayFrom, out hit, Mathf.Infinity))
+        Ray rayFrom = new Ray(transform.position, transform.forward);
+        if (Physics.Raycast(rayFrom, out var hit, Mathf.Infinity))
         {
             if (hit.collider.CompareTag("Player"))
             {
@@ -75,7 +67,6 @@ public class ShootProjectileScript : MonoBehaviour
             }
         }
     }
-
     public void TakeDamage(int damage, bool hit)
     {
         if (hit == true)

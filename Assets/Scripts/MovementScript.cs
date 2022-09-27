@@ -8,24 +8,17 @@ using UnityEngine.Serialization;
 public class MovementScript : MonoBehaviour
 {
 
-    [SerializeField] private float speed = 5f;
-    [SerializeField] private PlayerTurn playerTurn;
+    [SerializeField]private float speed = 5f;
+    [SerializeField]private PlayerTurn playerTurn;
+    [SerializeField]private float mouseSensitivity;
+    [SerializeField]private Transform mainCamera;
     private CharacterController _characterController;
-    // private CharacterController _characterController2;//
     private bool _groundedPlayer;
     private Vector3 _playerVelocity;
     private float _playerJump = 0.5f;
     private float _gravityValue = -9.82f;
     private GameObject _gameObject;
-    
-    // private Vector3 velocity;
-    // private bool isGrounded = false;
-    // [SerializeField]private Transform basePoint;
-    // [SerializeField]private float baseRadius = 0.5f;
-    // [SerializeField]private LayerMask layerMask;
     private float _xRotation = 0f;
-    [SerializeField]private float mouseSensitivity;
-    [SerializeField]private Transform mainCamera;
 
     private void Start()
     {
