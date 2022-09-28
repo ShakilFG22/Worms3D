@@ -33,29 +33,12 @@ public class MovementScript : MonoBehaviour
     void Update()
     {
         GroundedAndJump();
-        // if (playerTurn.IsPlayerTurn())
-        // {
-            // _groundedPlayer = _characterController.isGrounded;
-            // if (_groundedPlayer && _playerVelocity.y < 0)
-            // {
-            //     _playerVelocity.y = 0f;
-            // }
-            //
-            // if (Input.GetButtonDown("Jump") && IsTouchingFloor())
-            // {
-            //     _playerVelocity.y += Mathf.Sqrt(_playerJump * -3.0f * _gravityValue);
-            // }
-        // }
     }
     private void FixedUpdate()
     {
         if (playerTurn.IsPlayerTurn())
         {
             PlayerMove();
-            // Vector3 playerMove = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
-            // _characterController.Move(playerMove * (Time.fixedDeltaTime * speed));
-            // _playerVelocity.y += _gravityValue * Time.fixedDeltaTime;
-            // _characterController.Move(_playerVelocity * Time.fixedDeltaTime);
         }
     }
 
