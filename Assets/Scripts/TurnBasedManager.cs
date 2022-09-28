@@ -9,14 +9,14 @@ public class TurnBasedManager : MonoBehaviour
     private static TurnBasedManager _instance;
     [SerializeField] private PlayerTurn playerOne;
     [SerializeField] private PlayerTurn playerTwo;
-    [SerializeField] private float timeBetweenTurns;
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private GameObject enemyCamera;
     [SerializeField] private GameObject thirdCamera;
+    [SerializeField] private float timeBetweenTurns;
     private int _currentPlayerIndex;
-    private bool _isWaitingForNextTurn; // IsWaitingForNextTurn
+    private bool _isWaitingForNextTurn; 
     private float _turnDelay;
-
+    
     private void Awake()
     {
         if (_instance == null)

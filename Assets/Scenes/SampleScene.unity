@@ -239,7 +239,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   playerTurn: {fileID: 321917204}
-  mouseSensitivity: 1000
+  mouseSensitivity: 100
   mainCamera: {fileID: 1006758928}
 --- !u!143 &321917199
 CharacterController:
@@ -915,10 +915,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerOne: {fileID: 321917204}
   playerTwo: {fileID: 812336699}
-  timeBetweenTurns: 0.1
   playerCamera: {fileID: 1030076431}
   enemyCamera: {fileID: 739660236}
   thirdCamera: {fileID: 1042029213}
+  timeBetweenTurns: 0.1
 --- !u!4 &1611418679
 Transform:
   m_ObjectHideFlags: 0
@@ -1065,7 +1065,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.46
+      value: 4.45
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1073,23 +1073,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -8.47
+      value: -7.22
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8603719
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.50966686
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1097,7 +1097,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -61.283
       objectReference: {fileID: 0}
     - target: {fileID: 120990806386494824, guid: 7647d260bdd7035459b48eced45d64aa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1263,7 +1263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2124156829995764571, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.25
+      value: -9.37
       objectReference: {fileID: 0}
     - target: {fileID: 2124156829995764571, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1271,7 +1271,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2124156829995764571, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -7.15
+      value: -4.26
       objectReference: {fileID: 0}
     - target: {fileID: 2124156829995764571, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1327,7 +1327,7 @@ PrefabInstance:
       objectReference: {fileID: 812336699}
     - target: {fileID: 2124156829995764573, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
       propertyPath: mouseSensitivity
-      value: 1000
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8749218494795240402, guid: 5f959d9d84155484f8c20b1ac99e933d, type: 3}
       propertyPath: m_LocalPosition.x

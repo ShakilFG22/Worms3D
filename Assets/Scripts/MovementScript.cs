@@ -20,37 +20,57 @@ public class MovementScript : MonoBehaviour
     private GameObject _gameObject;
     private float _xRotation = 0f;
 
+    private void Awake()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
     }
 
-    void Update() //Maybe change to FixedUpdate
+    void Update()
+    {
+        GroundedAndJump();
+        // if (playerTurn.IsPlayerTurn())
+        // {
+            // _groundedPlayer = _characterController.isGrounded;
+            // if (_groundedPlayer && _playerVelocity.y < 0)
+            // {
+            //     _playerVelocity.y = 0f;
+            // }
+            //
+            // if (Input.GetButtonDown("Jump") && IsTouchingFloor())
+            // {
+            //     _playerVelocity.y += Mathf.Sqrt(_playerJump * -3.0f * _gravityValue);
+            // }
+        // }
+    }
+    private void FixedUpdate()
     {
         if (playerTurn.IsPlayerTurn())
         {
-            _groundedPlayer = _characterController.isGrounded;
-            if (_groundedPlayer && _playerVelocity.y < 0)
-            {
-                _playerVelocity.y = 0f;
-            }
-            Vector3 playerMove = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
-            _characterController.Move(playerMove * (Time.deltaTime * speed));
-            // _characterController.Move(playerMove * (Time.fixedDeltaTime * speed)); //Change to Time.FixedDeltaTime
-            
-            if (Input.GetButtonDown("Jump") && IsTouchingFloor())
-            {
-                _playerVelocity.y += Mathf.Sqrt(_playerJump * -3.0f * _gravityValue);
-            }
-            
-            _playerVelocity.y += _gravityValue * Time.deltaTime;
-            // _playerVelocity.y += _gravityValue * Time.FixedDeltaTime;
-            _characterController.Move(_playerVelocity * Time.deltaTime);
-            
-            FollowMouse();
+            PlayerMove();
+            // Vector3 playerMove = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
+            // _characterController.Move(playerMove * (Time.fixedDeltaTime * speed));
+            // _playerVelocity.y += _gravityValue * Time.fixedDeltaTime;
+            // _characterController.Move(_playerVelocity * Time.fixedDeltaTime);
         }
     }
-    
+
+    private void LateUpdate()
+    {
+        FollowMouse();
+    }
+
+    private void PlayerMove()
+    {
+        Vector3 playerMove = transform.right * Input.GetAxis("Horizontal") + transform.forward * Input.GetAxis("Vertical");
+        _characterController.Move(playerMove * (Time.fixedDeltaTime * speed));
+        _playerVelocity.y += _gravityValue * Time.fixedDeltaTime;
+        _characterController.Move(_playerVelocity * Time.fixedDeltaTime);
+    }
     private bool IsTouchingFloor()
     {
         RaycastHit hit;
@@ -60,15 +80,29 @@ public class MovementScript : MonoBehaviour
 
     private void FollowMouse()
     {
-        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.fixedDeltaTime;
+        // float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.fixedDeltaTime;
     
         _characterController.transform.Rotate(Vector3.up * mouseX);
     
-        _xRotation -= mouseY;
+        // _xRotation -= mouseY;
         _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
     
-        mainCamera.localRotation = Quaternion.Euler(mouseY, 0f, 0f);
+        mainCamera.localRotation = Quaternion.Euler(0f, 0f, 0f);
+    }
+
+    private void GroundedAndJump()
+    {
+        _groundedPlayer = _characterController.isGrounded;
+        if (_groundedPlayer && _playerVelocity.y < 0)
+        {
+            _playerVelocity.y = 0f;
+        }
+            
+        if (Input.GetButtonDown("Jump") && IsTouchingFloor())
+        {
+            _playerVelocity.y += Mathf.Sqrt(_playerJump * -3.0f * _gravityValue);
+        }
     }
 
 }
