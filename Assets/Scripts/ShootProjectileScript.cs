@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShootProjectileScript : MonoBehaviour
 {
@@ -37,8 +38,10 @@ public class ShootProjectileScript : MonoBehaviour
         {
             _playerHealth = 0;
             _enemyHealth = 0;
-            Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
             TurnBasedManager.GetInstance().ChangeToThirdCamera();
+            Destroy(gameObject);
+            // TurnBasedManager.GetInstance().ChangeScene3();
         }
     }
     
@@ -83,11 +86,14 @@ public class ShootProjectileScript : MonoBehaviour
         {
             Debug.Log("You are already dead: " + _playerHealth);
             Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
         }
         else if (_enemyHealth <= 0 && hit == false)
         {
             Debug.Log("You are already dead: " + _enemyHealth);
             Destroy(gameObject);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
+
         }
     }
 }

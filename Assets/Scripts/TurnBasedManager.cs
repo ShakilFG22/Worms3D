@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 
 public class TurnBasedManager : MonoBehaviour
@@ -78,6 +79,11 @@ public class TurnBasedManager : MonoBehaviour
 
     public void ChangeToThirdCamera()
     {
+        thirdCamera.gameObject.SetActive(true);
+    }    
+    public void ChangeScene3()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         thirdCamera.gameObject.SetActive(true);
     }
 }
