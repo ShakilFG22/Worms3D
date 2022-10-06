@@ -12,7 +12,7 @@ public class TurnBasedManager : MonoBehaviour
     [SerializeField] private PlayerTurn playerTwo;
     [SerializeField] private GameObject playerCamera;
     [SerializeField] private GameObject enemyCamera;
-    [SerializeField] private GameObject thirdCamera;
+    // [SerializeField] private GameObject thirdCamera;
     [SerializeField] private float timeBetweenTurns;
     private int _currentPlayerIndex;
     private bool _isWaitingForNextTurn; 
@@ -76,14 +76,14 @@ public class TurnBasedManager : MonoBehaviour
             playerCamera.gameObject.SetActive(true);
         }
     }
-
-    public void ChangeToThirdCamera()
-    {
-        thirdCamera.gameObject.SetActive(true);
-    }    
-    public void ChangeScene3()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        thirdCamera.gameObject.SetActive(true);
-    }
+    //
+    // public void ChangeToThirdCamera()
+    // {
+    //     thirdCamera.gameObject.SetActive(true);
+    // }    
+    // public void ChangeScene3()
+    // {
+    //     SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    //     thirdCamera.gameObject.SetActive(true);
+    // }
 }

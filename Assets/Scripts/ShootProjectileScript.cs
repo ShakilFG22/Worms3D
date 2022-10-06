@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -21,11 +22,20 @@ public class ShootProjectileScript : MonoBehaviour
     }
     private void Update()
     {
+        GameObject varGameObject = GameObject.Find("ShootProjectileScript");
         bool isPlayerTurn = playerTurn.IsPlayerTurn();
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             if (isPlayerTurn)
             {
+                // if (Input.GetKeyDown(KeyCode.Escape))
+                // {
+                //     // varGameObject.GetComponent<ShootProjectileScript>().enabled = false;
+                //     GetComponent<ShootProjectileScript>().enabled = false;
+                //     Time.timeScale = 0f;
+                // }
+
+                // varGameObject = GetComponent<ShootProjectileScript>().enabled = true;
                 TurnBasedManager.GetInstance().TriggerChangeTurn();
                 GameObject newProjectile = Instantiate(projectilePrefab);
                 newProjectile.transform.position = shootingStartPosition.position;
@@ -38,9 +48,10 @@ public class ShootProjectileScript : MonoBehaviour
         {
             _playerHealth = 0;
             _enemyHealth = 0;
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            TurnBasedManager.GetInstance().ChangeToThirdCamera();
             Destroy(gameObject);
+            // TurnBasedManager.GetInstance().ChangeToThirdCamera();
             // TurnBasedManager.GetInstance().ChangeScene3();
         }
     }
@@ -87,13 +98,14 @@ public class ShootProjectileScript : MonoBehaviour
             Debug.Log("You are already dead: " + _playerHealth);
             Destroy(gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 2);
+            Cursor.lockState = CursorLockMode.None;
         }
         else if (_enemyHealth <= 0 && hit == false)
         {
             Debug.Log("You are already dead: " + _enemyHealth);
             Destroy(gameObject);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 3);
-
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 }

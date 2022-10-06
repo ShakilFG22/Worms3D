@@ -19,6 +19,7 @@ public class MovementScript : MonoBehaviour
     private float _gravityValue = -9.82f;
     private GameObject _gameObject;
     private float _xRotation = 0f;
+    // private bool _stopTime = false;
 
     private void Awake()
     {
@@ -44,7 +45,16 @@ public class MovementScript : MonoBehaviour
 
     private void LateUpdate()
     {
-        FollowMouse();
+        // if (Input.GetKeyDown(KeyCode.Escape) && _stopTime == true)
+        // {
+        //     Time.timeScale = 0f;
+        //     _stopTime = false;
+        // }
+        // else if (_stopTime == false) ;
+        // {
+            FollowMouse();
+        //     _stopTime = true;
+        // }
     }
 
     private void PlayerMove()

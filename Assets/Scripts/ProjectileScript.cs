@@ -8,6 +8,6 @@ public class ProjectileScript : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     public void Initialize()
     {
-        rb.AddForce(transform.forward * 1300f); //Character controller radius 1.02
+        rb.AddForce(transform.forward * 1300f);
     }
 }
