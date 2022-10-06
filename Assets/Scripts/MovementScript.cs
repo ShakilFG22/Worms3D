@@ -21,14 +21,11 @@ public class MovementScript : MonoBehaviour
     private float _xRotation = 0f;
     // private bool _stopTime = false;
 
-    private void Awake()
-    {
-        Cursor.lockState = CursorLockMode.Locked;
-    }
-
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        Cursor.lockState = CursorLockMode.Locked;
+
     }
 
     void Update()
